@@ -25,9 +25,9 @@ class CartProductsController extends AppController
     }
 
     /**
-     * Add method
+     * Add method. Meant to be used with Ajax + .json
      *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Network\Response|void Renders json.
      */
     public function add()
     {

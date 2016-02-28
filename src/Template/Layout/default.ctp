@@ -32,7 +32,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('custom.css') ?>
 
     <?= $this->Html->script('angular.js') ?>
-    <?= $this->Html->script('jquery-1.12.1.min.js') ?>
     <?= $this->Html->script('angular-post-fix.js') ?>
     <?= $this->Html->script('ui-bootstrap-tpls-1.2.1.js') ?>
     <?= $this->Html->script('angular-resource.js') ?>

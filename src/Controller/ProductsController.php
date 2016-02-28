@@ -62,6 +62,13 @@ class ProductsController extends AppController
         $this->set('_serialize', ['product']);
     }
 
+    /**
+    * Search method.
+    *
+    * @param string $keyword Keyword to search by. Will find LIKE matches in product name or code.
+    * @param string $order Whether to sort results in descending or ascending order. Possible values ASC, DESC.
+    * @return \Cake\Network\Response|null
+    */
     public function search() {
         $keyword = $this->request->query('keyword');
         $order = $this->request->query('order');
