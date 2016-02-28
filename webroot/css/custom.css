@@ -1,0 +1,31 @@
+.cart-products {
+	list-style-type: none;
+	padding-left: 0;
+	position: absolute;
+	right: 0px;
+	width: 150px;
+	background-color:#fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 15px;
+	font-size: 80%;
+}
+
+.products-list {
+
+}
+
+.products-list .product {
+	padding:20px;
+	border: solid 1px #ddd;
+	border-radius: 4px;
+	height: 140px;
+	margin-bottom: 20px;
+}
+
+.products-list .product .product-details {
+	height: 65px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin-bottom: 10px;
+}

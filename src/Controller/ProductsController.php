@@ -62,47 +62,14 @@ class ProductsController extends AppController
         $this->set('_serialize', ['product']);
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Product id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $product = $this->Products->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $product = $this->Products->patchEntity($product, $this->request->data);
-            if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The product could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('product'));
-        $this->set('_serialize', ['product']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Product id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $product = $this->Products->get($id);
-        if ($this->Products->delete($product)) {
-            $this->Flash->success(__('The product has been deleted.'));
-        } else {
-            $this->Flash->error(__('The product could not be deleted. Please, try again.'));
-        }
-        return $this->redirect(['action' => 'index']);
+    public function search() {
+        $keyword = $this->request->query('keyword');
+        $order = $this->request->query('order');
+        $products = $this->Products->find()->where(['Products.name LIKE' => '%' . $keyword . '%'])
+            ->orWhere(['Products.code LIKE' => '%' . $keyword . '%'])
+            ->order(['Products.name' => $order]);
+               
+        $this->set(compact('products', 'keyword', 'order'));
+        $this->set('_serialize', ['products']);
     }
 }

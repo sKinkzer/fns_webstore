@@ -41,6 +41,7 @@ use Cake\Routing\Router;
  *
  */
 Router::defaultRouteClass('DashedRoute');
+Router::extensions(['html', 'json']);
 
 Router::scope('/', function (RouteBuilder $routes) {
     /**
@@ -48,15 +49,13 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Products', 'action' => 'index']);
+    $routes->connect('/search', ['controller' => 'Products', 'action' => 'search']);
 
-    /**
-     * ...and connect the rest of 'Pages' controller's URLs.
-     */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->resources('Products', ['only' => ['index', 'create', 'view', 'add']]);
+    $routes->resources('CartProducts', ['only' => ['index', 'create']]);
 
-    $routes->resources('Products', ['only' => 'index', 'add']);
-    $routes->resources('CartProducts', ['only' => 'add']);
+
 
     /**
      * Connect catchall routes for all controllers.

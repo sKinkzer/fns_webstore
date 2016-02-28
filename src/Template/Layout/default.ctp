@@ -26,11 +26,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
+    <?= $this->Html->css('cake.css') ?>
     <?= $this->Html->css('bootstrap.css') ?>
     <?= $this->Html->css('bootstrap-theme.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('custom.css') ?>
 
     <?= $this->Html->script('angular.js') ?>
+    <?= $this->Html->script('jquery-1.12.1.min.js') ?>
+    <?= $this->Html->script('angular-post-fix.js') ?>
     <?= $this->Html->script('ui-bootstrap-tpls-1.2.1.js') ?>
     <?= $this->Html->script('angular-resource.js') ?>
     <?= $this->Html->script('app/fns-webstore.js') ?>
@@ -39,7 +42,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
+<body ng-app="fnsWebstore">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -50,7 +53,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">FNS Webstore</a>
+          <a class="navbar-brand" href="/">FNS Webstore</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,20 +65,30 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     ['controller' => 'Products', 'action' => 'index', '_full' => true]
                 ); ?>
             </li>
+             <li>
+               <?php echo $this->Html->link(
+                    'Add New Product',
+                    ['controller' => 'Products', 'action' => 'add', '_full' => true]
+                ); ?>
+            </li>
           </ul>
-          <form class="navbar-form navbar-left" role="search">
+          <form method="get" action="search" class="navbar-form navbar-left" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" name="keyword" class="form-control" placeholder="Search">
+              <input type="hidden" name="order" value="DESC">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
+          <p class="navbar-text navbar-right">
+             <fns-shopping-cart></fns-shopping-cart>   
+          </p>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <?= $this->Flash->render() ?>
-    <section class="container clearfix">
+    <div class="container">
         <?= $this->fetch('content') ?>
-    </section>
+    </div>
     <footer>
     </footer>
 </body>

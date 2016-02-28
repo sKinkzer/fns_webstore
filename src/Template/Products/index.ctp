@@ -1,3 +1,1 @@
-<?php foreach ($products as $product): ?>
-<?= h($product->name); ?>
-<?php endforeach; ?>
+<?= $this->element('products-list', ['products' => $products]); ?>

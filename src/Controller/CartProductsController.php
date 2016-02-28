@@ -12,6 +12,19 @@ class CartProductsController extends AppController
 {
 
     /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function index()
+    {
+        $cartProducts = $this->CartProducts->find('all', ['contain' => 'Products']);
+
+        $this->set(compact('cartProducts'));
+        $this->set('_serialize', ['cartProducts']);
+    }
+
+    /**
      * Add method
      *
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
@@ -21,15 +34,13 @@ class CartProductsController extends AppController
         $cartProduct = $this->CartProducts->newEntity();
         if ($this->request->is('post')) {
             $cartProduct = $this->CartProducts->patchEntity($cartProduct, $this->request->data);
-            if ($this->CartProducts->save($cartProduct)) {
-                $this->Flash->success(__('The cart product has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
+            if (!$this->CartProducts->save($cartProduct)) {
                 $this->Flash->error(__('The cart product could not be saved. Please, try again.'));
-            }
+            } 
         }
-        $products = $this->CartProducts->Products->find('list', ['limit' => 200]);
-        $this->set(compact('cartProduct', 'products'));
+
+        $cartProduct['product'] = $this->CartProducts->Products->get($cartProduct->product_id);
+        $this->set(compact('cartProduct'));
         $this->set('_serialize', ['cartProduct']);
     }
 }

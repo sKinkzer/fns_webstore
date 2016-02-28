@@ -61,5 +61,6 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+        $this->set('referer', $this->request->referer());
     }
 }
