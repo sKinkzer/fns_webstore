@@ -47,6 +47,31 @@ class ProductsSeeder extends AbstractSeed
               'code' => '111234',
               'description' => 'Essential.'
           ),
+          array(
+              'name'    => 'Coffee mug',
+              'code' => '12343436',
+              'description' => 'Essential for drinking coffee.'
+          ),
+          array(
+              'name'    => '3d Printer Dlx',
+              'code' => 'P4df',
+              'description' => 'Since 3-d printing is hip, we have another printer as well!.'
+          ),
+          array(
+              'name'    => 'Speakers',
+              'code' => 'SPK23',
+              'description' => 'Listening to music is comforting.'
+          ),
+          array(
+              'name'    => 'USB wire',
+              'code' => 'US3232',
+              'description' => 'Helps connecting things.'
+          ),
+          array(
+              'name'    => 'Whiteboard markers',
+              'code' => '23124421',
+              'description' => 'Whiteboards are really nice. Especially when you can write on them.'
+          )
         );
 
         $products = $this->table('products');

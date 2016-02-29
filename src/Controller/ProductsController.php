@@ -10,6 +10,7 @@ use App\Controller\AppController;
  */
 class ProductsController extends AppController
 {
+    public $paginate = ['limit' => '12'];
 
     /**
      * Index method

@@ -11,10 +11,6 @@
 	font-size: 80%;
 }
 
-.products-list {
-
-}
-
 .products-list .product {
 	padding:20px;
 	border: solid 1px #ddd;
@@ -28,4 +24,17 @@
 	text-overflow: ellipsis;
 	overflow: hidden;
 	margin-bottom: 10px;
+}
+
+ul.pagination li.active a:hover {
+	color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+}
+ul.pagination li.active a {
+	background-color: #337ab7;
+	color: #fff;
+}
+ul.pagination .active a {
+	border-color:#ddd;
 }

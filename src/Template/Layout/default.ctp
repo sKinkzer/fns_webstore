@@ -73,7 +73,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
           </ul>
           <form method="get" action="search" class="navbar-form navbar-left" role="search">
             <div class="form-group">
-              <input type="text" name="keyword" class="form-control" placeholder="Search">
+              <input type="text" name="keyword" class="form-control" placeholder="Search products">
               <input type="hidden" name="order" value="DESC">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
